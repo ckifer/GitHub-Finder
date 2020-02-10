@@ -1,6 +1,8 @@
-import { SET_ALERT, REMOVE_ALERT } from '../../actions/types';
+import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
 
-export default (state, action) => {
+const initialState = null;
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case SET_ALERT:
       return action.payload;

@@ -8,7 +8,7 @@ import {
   CLEAR_USERS,
   GET_REPOS,
   GET_USER
-} from '../types';
+} from '../../actions/types';
 
 let githubClientId;
 let githubClientSecret;

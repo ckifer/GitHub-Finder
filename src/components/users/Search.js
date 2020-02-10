@@ -1,8 +1,11 @@
 import React, { useState, useContext } from 'react';
 import GithubContext from '../../context/github/githubContext';
 import AlertContext from '../../context/alert/alertContext';
+import { setAlert } from '../../actions/alertActions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Search = () => {
+const Search = ({ alert, setAlert }) => {
   const githubContext = useContext(GithubContext);
   const alertContext = useContext(AlertContext);
   const { clearUsers, users } = githubContext;
@@ -14,7 +17,7 @@ const Search = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (text === '') {
-      alertContext.setAlert('Please enter something', 'light');
+      setAlert('Please enter something', 'light');
     } else {
       githubContext.searchUsers(text);
       setText('');
@@ -46,4 +49,12 @@ const Search = () => {
   );
 };
 
-export default Search;
+Search.propTypes = {
+  alert: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+  alert: state.alert
+});
+
+export default connect(mapStateToProps, { setAlert })(Search);

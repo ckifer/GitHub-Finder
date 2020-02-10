@@ -9,11 +9,13 @@ import About from './components/pages/About';
 import User from './components/users/User';
 import Home from './components/pages/Home';
 import NotFound from './components/pages/NotFound';
+import { Provider } from 'react-redux';
+import store from './store';
 
 const App = () => {
   return (
     <GithubState>
-      <AlertState>
+      <Provider store={store}>
         <Router>
           <div className='App'>
             <Navbar />
@@ -28,7 +30,7 @@ const App = () => {
             </div>
           </div>
         </Router>
-      </AlertState>
+      </Provider>
     </GithubState>
   );
 };
